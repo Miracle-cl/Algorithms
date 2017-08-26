@@ -1,1 +1,1 @@
-# These are the solutions of problems from LeetCode.
+# These are solutions of problems from LeetCode.
