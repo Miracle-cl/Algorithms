@@ -15,7 +15,7 @@ class Solution(object):
         length = len(height)
         if length > 2:
             max_value = max(height)
-            num_max = height.count(max_value)
+            # find first and last maximum
             for i in range(length):
                 if height[i] == max_value:
                     first_max = i
@@ -25,7 +25,7 @@ class Solution(object):
                     last_max = length-i
                     break
             dif = last_max - first_max
-            # i = j = 0   [0,1,0,2,1,0,1,3,2,1,2,1]
+            # volume of water in the left of first maximum
             i = 0
             while i < first_max:
                 if height[i] > 0:
@@ -36,6 +36,7 @@ class Solution(object):
                     i = i + j
                 else:
                     i += 1
+            # volume of water in the right of last maximum
             i = length - 1
             while i > last_max:
                 if height[i] > 0:
@@ -46,6 +47,7 @@ class Solution(object):
                     i = i - j
                 else:
                     i -= 1
+            # volume of water between first maximum and last maximum only when dif > 1
             if dif > 1:
                 for i in range(first_max + 1, last_max):
                     water += (max_value - height[i])
