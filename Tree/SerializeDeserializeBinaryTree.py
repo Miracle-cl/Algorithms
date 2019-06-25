@@ -176,3 +176,4 @@ if __name__ == "__main__":
     res = codec.serialize(root)
     assert res == data
     print(res)
+8,3,1,null,null,6,4,7
