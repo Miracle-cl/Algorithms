@@ -1,18 +1,28 @@
 from typing import List
+from collections import defaultdict
+from heapq import heappush, heappop
 
-class S:
+class Solution:
     def findItinerary(self, tickets: List[List[str]]) -> List[str]:
-        ap = set([a for a, _ in tickets] + [b for _, b in tickets])
-        ap = sorted(ap)
-        ap.remove('JFK')
-        ap = ['JFK'] + ap
-        print(ap)
-        return ['a']
+        adj_list = defaultdict(list)
+        for f, t in tickets:
+            heappush(adj_list[f], t)
+
+        routes = []
+        self.dfs('JFK', adj_list, routes)
+        return routes[::-1]
+
+    def dfs(self, start, adj_list, routes):
+        dests = adj_list[start]
+        while dests:
+            dest = heappop(dests)
+            self.dfs(dest, adj_list, routes)
+        routes.append(start)
 
 
-
-tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
-res = ["JFK","ATL","JFK","SFO","ATL","SFO"]
-# ["JFK","SFO","ATL","JFK","ATL","SFO"]
-s = Solution()
-s.findItinerary(tickets)
+if __name__ == '__main__':
+    # tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
+    tickets = [["JFK","KUL"],["JFK","NRT"],["NRT","JFK"],["JFK","ABC"]]
+    s = Solution()
+    res = s.findItinerary(tickets)
+    print(res)
