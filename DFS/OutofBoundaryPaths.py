@@ -2,7 +2,7 @@ class Solution:
     def findPaths(self, m: int, n: int, N: int, i: int, j: int) -> int:
         _mem = {}
         mode = 1e9 + 7
-
+        
         def paths(s, i, j):
             if s < 0:
                 return 0
@@ -19,9 +19,6 @@ class Solution:
 
 
 
-# solu = Solution()
-# res = solu.findPaths(36, 5, 50, 15, 3)
-arr = [1,2,3]
-res = all(i > 2 for i in arr)
-import math
-print(math.sqrt(3))
+solu = Solution()
+res = solu.findPaths(36, 5, 50, 15, 3)
+print(res)

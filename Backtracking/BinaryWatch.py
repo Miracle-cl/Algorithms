@@ -40,4 +40,4 @@ if __name__ == '__main__':
     solu = Solution()
     num = 1
     res = solu.readBinaryWatch(num)
-    print
+    print(res)

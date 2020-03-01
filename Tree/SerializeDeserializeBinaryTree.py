@@ -164,16 +164,16 @@ if __name__ == "__main__":
     # root = codec.deserialize(data)
     # res = codec.serialize(root)
 
-    # codec = CodecPreOrder()
-    # # codec.deserialize(codec.serialize(root))
-    # data = "1,2,#,#,3,4,#,#,5,#,#"
-    # root = codec.deserialize(data)
-    # res = codec.serialize(root)
-
-    data = '1,2,3,#,#,4,5'
-    codec = CodecLevelOrder0()
+    codec = CodecPreOrder()
+    # codec.deserialize(codec.serialize(root))
+    data = "1,2,#,#,3,4,#,#,5,#,#"
     root = codec.deserialize(data)
     res = codec.serialize(root)
+
+    # data = '1,2,3,#,#,4,5'
+    # codec = CodecLevelOrder0()
+    # root = codec.deserialize(data)
+    # res = codec.serialize(root)
     assert res == data
     print(res)
-8,3,1,null,null,6,4,7
+# 8,3,1,null,null,6,4,7
