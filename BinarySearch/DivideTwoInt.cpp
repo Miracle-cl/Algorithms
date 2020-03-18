@@ -27,7 +27,6 @@ public:
 int main()
 {
     int a = -2147483648, b = -1;
-
     Solution solu;
     long long res = solu.divide(a, b);
     std::cout << res << "\n";

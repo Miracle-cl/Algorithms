@@ -21,7 +21,9 @@ public:
 int main()
 {
     Solution s;
-
+    char target = 'a';
+    vector<char> letters {'c', 'f', 'j'};
+    char c = s.nextGreatestLetter(letters, target);
     std::cout << c << "\n";
     return 0;
 }

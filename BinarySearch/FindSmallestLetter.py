@@ -6,7 +6,7 @@ class Solution:
         while l < r:
             mid = (l + r) // 2
             if letters[mid] <= target:
-                l = mid + 1;
+                l = mid + 1
             else:
                 r = mid
         return letters[r] if r < len(letters) else letters[0]
