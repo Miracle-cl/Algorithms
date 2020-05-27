@@ -4,7 +4,7 @@ class Solution:
             return True
         min_cnt = 0
         max_cnt = 0
-        for i, c in enumerate(s):
+        for c in s:
             if c == '(':
                 min_cnt += 1
             else:
