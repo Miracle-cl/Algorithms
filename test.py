@@ -1,29 +1,37 @@
-import math
+from typing import List
 
+# houses = [0,0,0,0,0]
+# cost = [[1,10],[10,1],[10,1],[1,10],[5,1]]
+# m = 5
+# n = 2
+# target = 3
 
-class Solution:
-    def findPaths(self, m: int, n: int, N: int, i: int, j: int) -> int:
-        _mem = {}
-        mode = 1e9 + 7
-
-        def paths(s, i, j):
-            if s < 0:
-                return 0
-            if (i < 0) or (j < 0) or (i >= m) or (j >= n):
-                return 1
-            if (s, i, j) in _mem:
-                return _mem[(s, i, j)]
-            p = paths(s-1, i, j-1) + paths(s-1, i, j+1) + \
-                paths(s-1, i-1, j) + paths(s-1, i+1, j)
-            _mem[(s, i, j)] = p % mode
-            return _mem[(s, i, j)]
-
-        ans = paths(N, i, j)
-        return int(ans)
+# class Solution:
+#     def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
+#         return
 
 
 # solu = Solution()
-# res = solu.findPaths(36, 5, 50, 15, 3)
-arr = [1, 2, 3]
-res = all(i > 2 for i in arr)
-print(math.sqrt(3))
+# res = solu.minCost(houses, cost, m, n, target)
+# # arr = [1, 2, 3]
+# # res = all(i > 2 for i in arr)
+# print(res)
+
+
+# class Solution:
+#     def change(self, amount: int, coins: List[int]) -> int:
+#         dp = [0] * (1+amount)
+#         dp[0] = 1
+#         for c in coins:
+#             for i in range(c, 1+amount):
+#                 dp[i] += dp[i-c]
+#             print(dp)
+#         return dp[amount]
+
+# amount = 5
+# coins = [1,2,5]
+# solu = Solution()
+# res = solu.change(amount, coins)
+# print(res)
+
+
