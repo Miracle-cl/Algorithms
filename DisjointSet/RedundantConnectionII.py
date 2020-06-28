@@ -9,7 +9,7 @@ class Solution:
         roots = list(range(n))
         parents = list(range(n))
 
-        ans = [] # save duplicate parents
+        ans = [] # store duplicate parents
         for i, (u, v) in enumerate(edges):
             # u -> v
             if parents[v] != v:
