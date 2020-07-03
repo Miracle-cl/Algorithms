@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Trie:
     def __init__(self):
         self.root = {}
@@ -60,6 +63,46 @@ class Solution:
 
         self.visited[r][c] = False
 
+    def findWords_simple(self, board: List[List[str]], words: List[str]) -> List[str]:
+        if not board or not words:
+            return []
+
+        res = set()
+        trie = {}
+        r, c = len(board), len(board[0])
+        visited = [[0] * c for _ in range(r)]
+
+        def neighbour(i, j):
+            for ni, nj in ((i-1, j), (i+1, j), (i, j-1), (i, j+1)):
+                if ni < 0 or ni >= r or nj < 0 or nj >= c or visited[ni][nj]:
+                    continue
+                yield ni, nj
+
+        def backtrack(i, j, dic, word):
+            if board[i][j] not in dic:
+                return
+            if '/' in dic[word[-1]]:
+                res.add(word)
+
+            visited[i][j] = 1
+            for ni, nj in neighbour(i, j):
+                backtrack(ni, nj, dic[board[i][j]], word + board[ni][nj])
+            visited[i][j] = 0
+
+        for word in words:
+            tmp = trie
+            for char in word:
+                if char not in tmp:
+                    tmp[char] = {}
+                tmp = tmp[char]
+            tmp['/'] = None
+
+        for i in range(r):
+            for j in range(c):
+                backtrack(i, j, trie, board[i][j])
+
+        return list(res)
+
 
 # board = [['o','a','a','n'],
 #           ['e','t','a','e'],
@@ -71,6 +114,7 @@ words = ['a']
 
 ss = Solution()
 print(ss.findWords(board, words))
+print(ss.findWords_simple(board, words))
 # tt = Trie()
 # for word in words:
 #     tt.insert(word)

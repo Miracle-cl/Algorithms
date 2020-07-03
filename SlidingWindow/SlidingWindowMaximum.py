@@ -37,7 +37,7 @@ class Solution:
         return ans
 
     def maxSlidingWindow_simp(self, nums: List[int], k: int) -> List[int]:
-        # merge class MonotonicQueue in one function
+        # use deque merge class MonotonicQueue in one function
         q = deque() # store index of nums
         
         def push(i):
