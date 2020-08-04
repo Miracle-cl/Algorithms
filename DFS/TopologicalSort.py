@@ -1,4 +1,35 @@
+from typing import List, Tuple
 from collections import namedtuple
+
+
+def topological_sort(N: int, edges: List[List[int]]) -> Tuple[bool, List]:
+    # if with cycle, then False, []
+    g = [[] for _ in range(N)]
+    for v, u in edges: # u is after v
+        g[u].append(v)
+
+    visited = [0] * N
+    sorts = []
+    def dfs(u):
+        print(u, visited)
+        if visited[u] == 1:
+            return False
+        if visited[u] == 2:
+            return True
+        visited[u] = 1
+        for v in g[u]:
+            if not dfs(v):
+                return False
+        sorts.append(u)
+        visited[u] = 2
+        return True
+    
+    for u in range(N):
+        if not dfs(u):
+            return False, []
+    return True, sorts[::-1]
+
+
 
 ## method 1
 class TopologicalSort:

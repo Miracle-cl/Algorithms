@@ -12,7 +12,7 @@ class SolutionDFS:
         for i in range(numCourses):
             if not self._dfs(i):
                 return False
-        print(visited)
+        print(self.visited)
         return True
 
     def _dfs(self, start):
@@ -80,6 +80,6 @@ class SolutionBFS:
 numCourses = 4
 # prerequisites = [[0,1], [1,3], [1,2], [2,3]]
 prerequisites = [[0,1], [3,1], [1,2], [2,3]]
-s = Solution()
+s = SolutionDFS()
 res = s.canFinish(numCourses, prerequisites)
 print(res)
