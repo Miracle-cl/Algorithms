@@ -39,6 +39,27 @@ class Solution:
         return dp[1][size-2]
 
 
+    def maxCoins_3(self, nums: List[int]) -> int:
+        nums = [1] + nums + [1]
+        n = len(nums)
+        # print(n, nums)
+        _dp = {}
+        def dp(i, j):
+            # put Balloon in (i, j), i, j is not include
+            # same as: k-th balloon is last burst
+            if i + 1 >= j:
+                return 0
+            if (i, j) in _dp:
+                return _dp[i, j]
+            ans = 0
+            for k in range(i+1, j):
+                ans = max(ans, nums[i]*nums[k]*nums[j] + dp(i, k) + dp(k, j))
+            _dp[i, j] = ans
+            return ans
+                
+        return dp(0, n -1)
+
+
 if __name__ == '__main__':
     solu = Solution()
     nums = [3,1,5,8]
