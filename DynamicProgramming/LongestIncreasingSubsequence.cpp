@@ -1,8 +1,10 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using std::vector;
 
+// N2
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
@@ -24,6 +26,39 @@ public:
         return max_len;
     }
 };
+
+
+// NlgN
+class Solution1s {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        vector<int> seqs;
+        for (int num : nums) {
+            if (seqs.empty() || seqs.back() < num) 
+                seqs.emplace_back(num);
+            else {
+                // int i = std::lower_bound(seqs.begin(), seqs.end(), num) - seqs.begin();
+                int i = bisect_left(seqs, num);
+                seqs[i] = num;
+            }
+        }
+        return seqs.size();
+    }
+
+    int bisect_left(vector<int>& nums, int tgt) {
+        int l = 0;
+        int r = nums.size();
+        while (l < r) {
+            int mid = (l + r) / 2;
+            if (nums[mid] < tgt) 
+                l = mid + 1;
+            else
+                r = mid;
+        }
+        return l;
+    }
+};
+
 
 int main()
 {
