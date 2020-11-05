@@ -21,7 +21,7 @@ class KnapSackProblem:
                 else:
                     dp[i][j] = dp[i-1][j]
             # break
-        # print(dp)
+        print(dp)
         return dp[-1][-1]
 
     @staticmethod
@@ -40,14 +40,14 @@ class KnapSackProblem:
 
 
 if __name__ == '__main__':
-    max_weight = 100
+    # max_weight = 100
 
-    weights = [77, 21, 29, 50, 99]
-    values = [92, 22, 87, 46, 90]
+    # weights = [77, 21, 29, 50, 99]
+    # values = [92, 22, 87, 46, 90]
 
-    # max_weight = 4
-    # weights = [1,1,2,2]
-    # values = [1,2,4,5]
+    max_weight = 4
+    weights = [1,1,2,2]
+    values = [1,2,4,5]
 
     # weights = [2,2,1,1,]
     # values = [4,5,1,2,]

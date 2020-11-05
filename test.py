@@ -12,34 +12,18 @@ start, finish, fuel = 1, 3, 5
 # start, finish, fuel = 0,0,3
 
 # class Solution:
-def countRoutes(locations: List[int], start: int, finish: int, fuel: int) -> int:
-    n = len(locations)
-    mem = {}
-
-    def dfs(i, fuel):
-        if fuel < 0:
-            return 0
-        if abs(locations[i]-locations[finish]) > fuel:
-            return 0
-        if (i, fuel) in mem:
-            return mem[i, fuel]
-        ans = 0
-        for j in range(n):
-            if j == i:
-                continue
-            if j == finish:
-                ans += 1
-            ans += dfs(j, fuel - abs(locations[i]-locations[j]))
-        mem[i, fuel] = ans
-        return ans
-
-    res = dfs(start, fuel)
-    pprint(mem)
-    return res + (1 if start == finish else 0)
 
 
-print([countRoutes(locations, start, finish, fuel)])
+def bt(k, h, v, s):
+    if k == 0:
+        print(s)
+        return 
+    if h == 0 and v == 0:
+        k -= 1
+        return
+    if h > 0:
+        bt(h-1, v, s + 'H')
+    if v > 0:
+        bt(h, v-1, s + 'V')
 
-# arr = [1,2,3,3,3,4, 1,2,3]
-# i = bisect.bisect_right(arr, 4, lo=0, hi=6)
-# print(i)
+bt(1,3,3,'')
