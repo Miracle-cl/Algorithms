@@ -30,8 +30,11 @@ class Solution:
         for n in reverses:
             ft.update(ranks[n], 1)
             res.append(ft.query(ranks[n] - 1))
+            print(ft._sums)
         return res[::-1]
 
 
 # [5,2,6,1] -> [2,1,1,0]
-# nums = [7,1,3,2,9,2,1]
+nums = [7,1,3,2,9,2,1]
+res = Solution().countSmaller(nums)
+print(res)

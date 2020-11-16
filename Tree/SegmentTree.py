@@ -46,8 +46,9 @@ class SegmentTree:
     
 
 
-# arr = [2,1,5,3,4]
-# st = SegmentTree()
-# n15 = st.build_tree(arr, 0, len(arr)-1)
-# st.update_tree(n15, 4, 6)
-# st.query_sum(n15, 1, 4)
+arr = [2,1,5,3,4]
+st = SegmentTree()
+n15 = st.build_tree(arr, 0, len(arr)-1)
+print(st.query_sum(n15, 1, 4))
+st.update_tree(n15, 4, 6)
+print(st.query_sum(n15, 1, 4))

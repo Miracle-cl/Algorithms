@@ -19,6 +19,7 @@ class FenwickTree:
     
     @staticmethod
     def low_bit(x):
+        # ~x + 1 == -x
         return x & -x
 
 
