@@ -5,25 +5,31 @@ import heapq, math
 import bisect
 
 
-locations = [2,3,6,8,4]
-start, finish, fuel = 1, 3, 5
+matrix = [["1","0","1","0","0"],
+            ["1","0","1","1","1"],
+            ["1","1","1","1","1"],
+            ["1","0","0","1","0"]]
 
-# locations = [2,1,5]
-# start, finish, fuel = 0,0,3
+r, c = len(matrix), len(matrix[0])
 
-# class Solution:
+left = [[0] * c for _ in range(r)]
+for i in range(r):
+    left[i][0] = 1 if matrix[i][0] == '1' else 0
+    for j in range(1, c):
+        if matrix[i][j] == '1':
+            left[i][j] = left[i][j-1] + 1
+
+ans = 0
+for i in range(r):
+    for j in range(c):
+        if left[i][j] == 0:
+            continue
+        width = left[i][j]
+        for k in range(i-1, -1, -1):
+            width = min(width, left[k][j])
+            if width == 0:
+                break
+            ans = max(ans, width * (i - k + 1))
 
 
-def bt(k, h, v, s):
-    if k == 0:
-        print(s)
-        return 
-    if h == 0 and v == 0:
-        k -= 1
-        return
-    if h > 0:
-        bt(h-1, v, s + 'H')
-    if v > 0:
-        bt(h, v-1, s + 'V')
-
-bt(1,3,3,'')
+pprint(ans)
