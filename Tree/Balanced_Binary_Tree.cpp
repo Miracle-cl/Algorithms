@@ -38,7 +38,7 @@ int main()
     root->right = new TreeNode(4);
     root->left->left = new TreeNode(1);
     Solution s;
-    int h = s.height(root);
+    int h = s.cal_height(root);
     std::cout << h << "\n";
     return 0;
 }
