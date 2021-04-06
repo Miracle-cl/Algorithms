@@ -104,8 +104,8 @@ class MinHeapq:
 
 
 if __name__ == '__main__':
-    # mh = MinHeap() # Implement heap by list
-    mh = MinHeapq() # Implement heap by heapq
+    mh = MinHeap() # Implement heap by list
+    # mh = MinHeapq() # Implement heap by heapq
     mh.push(3)
     mh.push(2)
     mh.delete_key(1)
