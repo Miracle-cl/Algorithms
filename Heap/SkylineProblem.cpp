@@ -74,8 +74,8 @@ int main()
     vector<vector<int>> res = sol.getSkyline(buildings);
 
     for (auto& e: res) {
-            std::cout << e[0] << ' ' << e[1] << '\n';
-        }
+        std::cout << e[0] << ' ' << e[1] << '\n';
+    }
 
     return 0;
 }
